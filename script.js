@@ -6,7 +6,9 @@ for (let i=0; i < animals.length; i++) {
     animals[i].addEventListener("click", function() {
         let animal = this.innerHTML;
         let lowerAnimal = animal.toLowerCase();
-        makeSound(lowerAnimal);
+        //makeSound(lowerAnimal);
+
+        addStyle(lowerAnimal);
     })
 }
 
@@ -24,9 +26,19 @@ function makeSound(name) {
             sound2.play();
             break;
 
-        case "dog":
+        case "bark":
             let sound3 = new Audio("sound/bark.mp3");
             sound3.play();
             break;            
     }
+}
+
+function addStyle(name) {
+    let activeEl = document.querySelector("." + name);
+    console.log(activeEl);
+    
+    activeEl.classList.add("active");
+    setTimeout(function() {
+        activeEl.classList.remove("active");
+    }, 200)
 }
