@@ -1,4 +1,36 @@
-const animals = document.querySelectorAll(".animal");
+const myArray = ['lion', 'cougar', 'bark'];
+document.addEventListener("DOMContentLoaded", init);
+
+function init() {
+    console.log("page ready");
+    
+    myArray.forEach(function(item) {
+        console.log(item);
+        let div = document.createElement("div");
+        div.setAttribute("class", "animal " + item);
+        div.innerText = item.toUpperCase();
+        div.addEventListener("click", function() {
+            playit(item);
+        })
+        document.body.appendChild(div);
+    })
+}
+
+
+function playit(name) {
+    let activeEl = document.querySelector("." + name);
+    let sound1 = new Audio("sound/"+name+".mp3");
+            sound1.play();
+    
+    activeEl.classList.add("active");
+    setTimeout(function() {
+        activeEl.classList.remove("active");
+    }, 200)
+}
+
+
+
+/* const animals = document.querySelectorAll(".animal");
 
 console.log(animals);
 
@@ -11,7 +43,9 @@ for (let i=0; i < animals.length; i++) {
 
         playit(lowerAnimal);
     })
-}
+} */
+
+
 
 /* function makeSound(name) {
     console.log(name);
@@ -33,18 +67,6 @@ for (let i=0; i < animals.length; i++) {
             break;            
     }
 } */
-
-function playit(name) {
-    let activeEl = document.querySelector("." + name);
-    let sound1 = new Audio("sound/"+name+".mp3");
-            sound1.play();
-    
-    activeEl.classList.add("active");
-    setTimeout(function() {
-        activeEl.classList.remove("active");
-    }, 200)
-}
-
 
 /* function addStyle(name) {
     let activeEl = document.querySelector("." + name);
