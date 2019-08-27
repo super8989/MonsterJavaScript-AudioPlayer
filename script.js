@@ -7,12 +7,13 @@ for (let i=0; i < animals.length; i++) {
         let animal = this.innerHTML;
         let lowerAnimal = animal.toLowerCase();
         //makeSound(lowerAnimal);
+        //addStyle(lowerAnimal);
 
-        addStyle(lowerAnimal);
+        playit(lowerAnimal);
     })
 }
 
-function makeSound(name) {
+/* function makeSound(name) {
     console.log(name);
 
     switch(name) {
@@ -31,14 +32,25 @@ function makeSound(name) {
             sound3.play();
             break;            
     }
-}
+} */
 
-function addStyle(name) {
+function playit(name) {
     let activeEl = document.querySelector("." + name);
-    console.log(activeEl);
+    let sound1 = new Audio("sound/"+name+".mp3");
+            sound1.play();
     
     activeEl.classList.add("active");
     setTimeout(function() {
         activeEl.classList.remove("active");
     }, 200)
 }
+
+
+/* function addStyle(name) {
+    let activeEl = document.querySelector("." + name);
+    
+    activeEl.classList.add("active");
+    setTimeout(function() {
+        activeEl.classList.remove("active");
+    }, 200)
+} */
